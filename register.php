@@ -13,14 +13,14 @@ $password = "root";
 $dbname = "web_user";
 
 $handle = new mysqli($servername, $username, $password, $dbname);
-//$handle = mysqli_connect(host, user, passwd, dbName);
+
 if($handle->connect_error){
-    die('连接数据库失败！'.$handle->connect_error);
+    die('Unable to connect to the database!'.$handle->connect_error);
 }
 echo "Connected successfully";
 
 header('Content-type:text/html; charset=utf-8');
-//$action = $_GET['action'];//获取get过来的action行为参数
+
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,17 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $sql = "insert into users(username,password,age,user_email,phone) values('%s','%s','%s','%s','%s')";
     $formatted = sprintf($sql, $data['username'], $data['password'], $data['age'], $data['user_email'], $data['phone']);
-    echo '打印刚才执行的SQL语句：' . '<br>' . $formatted . '<br>';
+    echo 'Print the SQL statement just executed:' . '<br>' . $formatted . '<br>';
     $result = mysqli_query($handle, $formatted);
 
-    //echo $result ? $userid.'注册成功' : '注册失败';
-
     if(!$result){
-        echo "<script>alert('注册失败！')</script>";
+        echo "<script>alert('Register unsuccessfully!')</script>";
         echo "<script>window.location.href='index.html'</script>";
     }
     else{
-        echo "<script>alert('$userid.注册成功！')</script>";
+        echo "<script>alert('Welcome $userid join us successfully!')</script>";
         echo "<script>window.location.href='index.html'</script>";
     }
 }

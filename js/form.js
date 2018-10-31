@@ -1,16 +1,16 @@
 (function(){
-    var hintText={user_email:{hint:"⚠️邮箱是您登录的唯一账号，请谨慎填写",right:"√邮箱格式正确",wrong:"×邮箱格式有误，请重新输入"},
-            user_name:{hint:"⚠️请输入3-12个字符的用户名（包括字母/数字/下划线）",right:"√用户名格式正确",wrong:"×用户名格式有误，请重新输入"},
-            login_user_name:{hint:"⚠️请输入3-12个字符的用户名（包括字母/数字/下划线）",right:"√用户名格式正确",wrong:"×用户名格式有误，请重新输入"},
-            name:{hint:"⚠️请输入3-12姓名",right:"√姓名输入正确",wrong:"×姓名输入有误，请重新输入"},
-            age:{hint:"⚠️请输入正确年龄",right:"√年龄输入正确",wrong:"×年龄输入有误，请重新输入"},
-            address:{hint:"⚠️请输入正确地址",right:"√地址输入正确",wrong:"×地址输入有误，请重新输入"},
-            weight:{hint:"⚠️请输入物品质量",right:"√物品质量已输入输入",wrong:"×物品质量输入有误，请重新输入"},
-            phone:{hint:"⚠️请输入11位电话号码",right:"√电话号码输入正确",wrong:"×电话号码输入有误，请重新输入"},
-            id_card:{hint:"⚠️请输入18位身份证号码",right:"√身份证号码输入正确",wrong:"×身份证号码输入有误，请重新输入"},
-            password:{hint:"⚠️请输入6位以上密码",right:"√密码格式正确",wrong:"×请输入符合格式的密码"},
-            repassword:{hint:"⚠️请再次输入密码",right:"√再次输入密码正确",wrong:"×两次输入不一致或密码格式不正确，请重新输入或密码格式不正确",
-                login_password:{hint:"⚠️请输入6位以上密码",right:"√密码格式正确",wrong:"×请输入符合格式的密码"}}};
+    var hintText={user_email:{hint:"⚠️Please fill in carefully",right:"√correct email format",wrong:"×wrong format, please reenter"},
+            user_name:{hint:"⚠️Please enter a username of 3-12 characters (including alphanumeric/underscore)",right:"√correct username format",wrong:"×wrong format, please reenter"},
+            login_user_name:{hint:"⚠️Please enter a username of 3-12 characters (including alphanumeric/underscore)",right:"√correct username format",wrong:"×wrong format, please reenter"},
+            name:{hint:"⚠️Please enter name of 3-12 characters (including alphanumeric/underscore)",right:"√correct format",wrong:"×wrong format, please reenter"},
+            age:{hint:"⚠️Please input correct age",right:"√correct age",wrong:"×wrong age, please reenter"},
+
+
+            phone:{hint:"⚠️Please input phone number of 11 bits",right:"√correct phone number",wrong:"×wrong phone number, please reenter"},
+
+            password:{hint:"⚠️Please enter a password of 6 or more",right:"√correct password format",wrong:"×please input password in format"},
+            repassword:{hint:"⚠️Please reenter password",right:"√correct re-enter password",wrong:"×Enter the password twice inconsistent or incorrect format, please re-enter your password or in correctly formatted",
+                login_password:{hint:"⚠️Please enter a password of 6 or more",right:"√correct password format",wrong:"×please input password in format"}}};
     var regEvent=function(node, event, func){
         if (node.addEventListener)
             node.addEventListener(event, func);
@@ -36,11 +36,11 @@
                 flag=/^[a-zA-Z ]{1,20}$/.test(value.replace(/[\u0391-\uFFE5]/g,"nn"));
                 id="name";
                 break;
-            case "send_from_address":
+           /* case "send_from_address":
             case "send_to_address":
                 flag=/^\S{6,16}$/.test(value.replace(/[\u0391-\uFFE5]/g,"nn"));
                 id="address";
-                break;
+                break;*/
             case "password":
             case "login_password":
             case "info_password":
@@ -71,12 +71,12 @@
                 flag=/^((\(\d{2,3}\))|(\d{3}\-))?1[3,8,5]{1}\d{9}$/.test(value);
                 id="phone";
                 break;
-            case "id_card":
+            /*case "id_card":
                 flag=/^\S{18}$/.test(value);
                 break;
             case "weight":
                 flag=/^\d{1,4}$/.test(value);
-                break;
+                break;*/
             default:
                 break;
         }
@@ -111,14 +111,14 @@
         if(index!==0){
             alert(index);
             e.preventDefault();
-            alert("您的输入有误，请检查并重新输入！");
+            alert("Your input is incorrect, please check and re-enter!");
             return false;
         }  
     });  
     regEvent(document.getElementById("button"),"click",function(e){
         if(index!==0){
             e.preventDefault();
-            alert("您的输入有误，请检查并重新输入！");
+            alert("Your input is incorrect, please check and re-enter!");
             return false;
         }  
     });  

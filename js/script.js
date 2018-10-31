@@ -16,7 +16,7 @@ $(function() {
 });
 
 
-//OWL CAROSEL TESTIMONIAL
+//OWL CAROSEL
 $(function(){
     $('.owl-carousel').owlCarousel({
         loop:true,
